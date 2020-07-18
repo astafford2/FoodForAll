@@ -6,7 +6,7 @@
     <title>repl.it</title>
     <div id="header">
         <div  class="menu">
-            <p><a href="index.html">Home</a></p>
+            <p><a href="{{ url_for('home') }}">Home</a></p>
         </div>
         <div  class="menu">
             <a href="{{ url_for('aboutUs') }}"><p>About Us</a></p>
@@ -15,10 +15,10 @@
             <img src="{{ url_for('static', filename='logo.png') }}" >
         </div>
         <div  class="menu">
-             <p><a href="foodbank.html">Food Banks</a></p>
+             <p><a href="{{ url_for('findFoodBank') }}">Food Banks</a></p>
         </div>
         <div  class="menu">
-             <p><a href="contactus.html">Contact Us</a></p>
+             <p><a href="{{ url_for('contactUs') }}">Contact Us</a></p>
         </div>
         <div class="container">
   <img src="{{ url_for('static', filename='vegetable.png') }}" alt="Norway" style="width:100%;">
@@ -34,7 +34,7 @@
 
 
 <div class="foodbankthing">
-  <p><a href="foodbank.html">find a food bank to donate to <i class="fas fa-arrow-right"></i></a></p>
+  <p><a href="{{ url_for('findFoodBank') }}">find a food bank to donate to <i class="fas fa-arrow-right"></i></a></p>
 </div>
 
 <div class="row">

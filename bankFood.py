@@ -85,23 +85,27 @@ def removeDonations():
 # [START searching]
 def fetchFoodByBank(bank):
     with foodBank.context():
-        query = FoodItem.query(FoodItem.bankName == bank)
-        items = [i.bankName + ' | ' + i.foodType + ' | ' + i.foodDesc + ' | ' + str(i.itemCount) for i in query]
+        query = FoodItem.query(FoodItem.bankName == bank.upper())
+        # items = [i.bankName + ' | ' + i.foodType + ' | ' + i.foodDesc + ' | ' + str(i.itemCount) for i in query]
+        items = query.fetch()
+
     return items
 
 
 def fetchFoodByType(fType):
     with foodBank.context():
-        query = FoodItem.query(FoodItem.foodType == fType)
-        items = [i.bankName + ' | ' + i.foodType + ' | ' + i.foodDesc + ' | ' + str(i.itemCount) for i in query]
+        query = FoodItem.query(FoodItem.foodType == fType.upper())
+        # items = [i.bankName + ' | ' + i.foodType + ' | ' + i.foodDesc + ' | ' + str(i.itemCount) for i in query]
+        items = query.fetch()
 
     return items
 
 
 def fetchFoodByDesc(desc):
     with foodBank.context():
-        query = FoodItem.query(FoodItem.foodDesc == desc)
-        items = [i.bankName + ' | ' + i.foodType + ' | ' + i.foodDesc + ' | ' + str(i.itemCount) for i in query]
+        query = FoodItem.query(FoodItem.foodDesc == desc.lower())
+        # items = [i.bankName + ' | ' + i.foodType + ' | ' + i.foodDesc + ' | ' + str(i.itemCount) for i in query]
+        items = query.fetch()
 
     return items
 

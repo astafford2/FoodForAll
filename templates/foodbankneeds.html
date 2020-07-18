@@ -6,19 +6,19 @@
     <title>repl.it</title>
     <div id="header">
         <div  class="menu">
-            <p><a href="index.html">Home</a></p>
+            <p><a href="{{ url_for('home') }}">Home</a></p>
         </div>
         <div  class="menu">
-            <a href=aboutus.html><p>About Us</a></p>
+            <a href="{{ url_for('aboutUs') }}"><p>About Us</a></p>
         </div>
         <div  class="menu">
             <img src="{{ url_for('static', filename='logo.png') }}" >
         </div>
         <div  class="menu">
-             <p><a href="foodbank.html">Food Banks</a></p>
+             <p><a href="{{ url_for('findFoodBank') }}">Food Banks</a></p>
         </div>
         <div  class="menu">
-             <p><a href="contactus.html">Contact Us</a></p>
+             <p><a href="{{ url_for('contactUs') }}">Contact Us</a></p>
         </div>
         <div class="container">
   <img src="{{ url_for('static', filename='vegetable.png') }}" alt="Norway" style="width:100%;">
@@ -34,13 +34,11 @@
     <hr>
 
   <div class="boxes">
-    <p><a href="needsandhaves.html"> First Food Bank     miles away</a></p>
+    <p><a href="{{ url_for('needsAndHaves') }}"> First Food Bank     miles away</a></p>
     <p> This would be a description of the food bank</p>
   </div>
 
   <body>
-      {% for item in neededItems %}
-        <p>@ {{ item['bankName'] }} we need {{ item['foodDesc']}}</p>
-      {% endfor %}
+      
   </body>
 </html>

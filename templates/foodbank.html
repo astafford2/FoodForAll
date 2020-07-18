@@ -6,26 +6,26 @@
     <title>repl.it</title>
     <div id="header">
         <div  class="menu">
-            <p><a href="index.html">Home</a></p>
+            <p><a href="{{ url_for('home') }}">Home</a></p>
         </div>
         <div  class="menu">
-            <a href=aboutus.html><p>About Us</a></p>
+            <a href="{{ url_for('aboutUs') }}"><p>About Us</a></p>
         </div>
         <div  class="menu">
-            <img src="images/logo.png" >
+            <img src="{{ url_for('static', filename='logo.png') }}" >
         </div>
         <div  class="menu">
-             <p><a href="foodbank.html">Food Banks</a></p>
+             <p><a href="{{ url_for('findFoodBank') }}">Food Banks</a></p>
         </div>
         <div  class="menu">
-             <p><a href="contactus.html">Contact Us</a></p>
+             <p><a href="{{ url_for('contactUs') }}">Contact Us</a></p>
         </div>
         <div class="container">
-  <img src="images/vegetable.png" alt="Norway" style="width:100%;">
+  <img src="{{ url_for('static', filename='vegetable.png') }}" alt="Norway" style="width:100%;">
   
 </div>
     </div>
-    <link href="style.css" rel="stylesheet" type="text/css" />
+    <link href="{{ url_for('static', filename='style.css') }}" rel="stylesheet" type="text/css" />
   </head>
 
   <div class="zipcode">
@@ -40,7 +40,7 @@
   <input type="text" id="lname" name="lname"><br><br>
   <input type="submit" value="Submit" >
 </form>
-<p><a href="foodbankneeds.html">go to next page</a></p>
+<p><a href="{{ url_for('foodBankNeeds') }}">go to next page</a></p>
   </div>
 
  </body>

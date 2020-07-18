@@ -9,7 +9,6 @@ app = Flask(__name__)
 
 @app.route('/')
 def home():
-
     return render_template('index.html')
 
 
@@ -18,9 +17,28 @@ def aboutUs():
     return render_template('aboutus.html')
 
 
+@app.route('/contactUs')
+def contactUs():
+    return render_template('contactus.html')
+
+
+@app.route('/foodBank')
+def findFoodBank():
+    return render_template('foodbank.html')
+
+
 @app.route('/foodBankNeeds')
 def foodBankNeeds():
     return render_template('foodbankneeds.html')
+
+
+@app.route('/needsAndHaves')
+def needsAndHaves():
+    bank = 'bank'
+    neededItems = fetchFoodNeeded(bank)
+    storedItems = fetchFoodByBank(bank)
+
+    return render_template('needsandhaves.html', neededItems=neededItems, storedItems=storedItems)
 
 
 if __name__ == '__main__':
