@@ -8,9 +8,19 @@ app = Flask(__name__)
 
 
 @app.route('/')
-def root():
+def home():
 
     return render_template('index.html')
+
+
+@app.route('/aboutUs')
+def aboutUs():
+    return render_template('aboutus.html')
+
+
+@app.route('/foodBankNeeds')
+def foodBankNeeds():
+    return render_template('foodbankneeds.html')
 
 
 if __name__ == '__main__':

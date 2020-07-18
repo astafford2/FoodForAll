@@ -6,7 +6,7 @@
     <title>repl.it</title>
     <div id="header">
         <div  class="menu">
-            <p><a href="index.html">Home</a></p>
+            <p><a href="{{ url_for('home') }}">Home</a></p>
         </div>
         <div  class="menu">
             <a href=aboutus.html><p>About Us</a></p>
@@ -25,7 +25,7 @@
   
 </div>
     </div>
-    <link href="style.css" rel="stylesheet" type="text/css" />
+    <link href="{{ url_for('static', filename='style.css') }}" rel="stylesheet" type="text/css" />
   </head>
 
   <div class= "heaaderr"
