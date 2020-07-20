@@ -1,5 +1,5 @@
 
-from flask import Flask, render_template
+from flask import Flask, render_template, request
 from bankFood import *
 
 app = Flask(__name__)
@@ -27,18 +27,27 @@ def findFoodBank():
     return render_template('foodbank.html')
 
 
-@app.route('/foodBankNeeds')
+@app.route('/foodBankNeeds', methods=['GET', 'POST'])
 def foodBankNeeds():
-    return render_template('foodbankneeds.html')
+    if request.method == 'POST':
+        bank = request.form['bankName']
+        
+        neededItems = fetchFoodNeeded(bank)
+        storedItems = fetchFoodByBank(bank)
+
+        return render_template('needsandhaves.html', neededItems=neededItems, storedItems=storedItems)
+
+    else:
+        return render_template('foodbankneeds.html')
 
 
 @app.route('/needsAndHaves')
 def needsAndHaves():
-    bank = 'bank'
-    neededItems = fetchFoodNeeded(bank)
-    storedItems = fetchFoodByBank(bank)
+    # bank = input("Enter bank name: ")
+    # neededItems = fetchFoodNeeded(bank)
+    # storedItems = fetchFoodByBank(bank)
 
-    return render_template('needsandhaves.html', neededItems=neededItems, storedItems=storedItems)
+    return render_template('needsandhaves.html') # , neededItems=neededItems, storedItems=storedItems
 
 
 if __name__ == '__main__':
