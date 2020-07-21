@@ -41,6 +41,17 @@
             border-color: #7DB5E4;
             border-width: 3px;
         }
+
+        .inputting{
+            margin: 10px;
+            float: left;
+            text-align: center;
+        }
+        .removing
+        {
+            margin: 10px;
+            float: right;
+        }
     </style>
     <div id="header">
         <div  class="menu">
@@ -70,5 +81,36 @@
     </div>
     <link href="{{ url_for('static', filename='style.css') }}" rel="stylesheet" type="text/css" />
   </head>
+
+  <body>
+      <div style="text-align: center; margin: 0 20% 0 20%">
+        <div class="inputting">
+            <form method="POST">
+                <h1>Input donated items:</h1>
+                <label for"bankName">Food Bank Name:</label>
+                <input type="text" id="bankName" name="bankName" style="margin: 10px 0 10px 0"><br>
+
+                <label for="foodType">Food Type</label>
+                <select id="foodType" name="foodType" style="margin: 10px 0 10px 0">
+                    <option value="CANNED">Canned</option>
+                    <option value="JARRED">Jarred</option>
+                    <option value="BAGGED">Bagged</option>
+                </select><br>
+
+                <label for="foodDesc">Food Description:</label>
+                <input type="text" id="foodDesc" name="foodDesc" style="margin: 10px 0 10px 0"><br>
+
+                <label for="quantity">Item Quantity:</label>
+                <input type="text" id="quantity" name="quantity" style="margin: 10px 0 10px 0; max-width: 50px"><br><br>
+
+                <input type="submit" value="Submit">
+            </form>
+        </div>
+
+        <div class="removing">
+            <h1>Remove items given:</h1>
+        </div>
+      </div>
+  </body>
 
 </html>

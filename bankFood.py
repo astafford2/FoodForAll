@@ -26,12 +26,12 @@ def storeFoodItem(bank, fType, desc, quantity):
 
         if query.count():
             item = query.get()
-            item.itemCount += quantity
+            item.itemCount += int(quantity)
         else:
             item = FoodItem(bankName = bank,
                             foodType = fType,
                             foodDesc = desc,
-                            itemCount = quantity)
+                            itemCount = int(quantity))
 
         item.put()
 
@@ -48,7 +48,7 @@ def inputDonations():
             ''')
     while fType != 'q':
         fDesc = input("Enter food description: ")
-        quantity = int(input("Enter number of item being donated: "))
+        quantity = input("Enter number of item being donated: ")
 
         storeFoodItem(bank, fType, fDesc, quantity)
 

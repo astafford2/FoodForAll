@@ -30,7 +30,12 @@ def contactUs():
 @app.route('/foodBank', methods=['GET', 'POST'])
 def findFoodBank():
     if request.method == 'POST':
-        origin = request.form['origin']
+        address = request.form['addr']
+        city = request.form['city']
+        state = request.form['stateCode']
+        zipcode = request.form['zip']
+
+        origin = address + " " + city + " " + state + " " + zipcode
 
         destination, bankName, time, dist = closestBank(origin)
         dist *= 0.000621371
@@ -46,9 +51,19 @@ def companyLogin():
     return render_template('companylogin.html')
 
 
-@app.route('/companyFeatures')
+@app.route('/companyFeatures', methods=['GET', 'POST'])
 def companyFeatures():
-    return render_template('companyFeatures.html')
+    if request.method == 'POST':
+        bankName = request.form['bankName']
+        foodType = request.form['foodType']
+        foodDesc = request.form['foodDesc']
+        quantity = request.form['quantity']
+
+        storeFoodItem(bankName, foodType, foodDesc, quantity)
+
+        return redirect(url_for('companyFeatures'))
+    else:
+        return render_template('companyFeatures.html')
 
 
 @app.route('/foodBankNeeds', methods=['GET', 'POST'])
@@ -67,11 +82,6 @@ def foodBankNeeds():
         time = request.args.get("time")
         dist = request.args.get("dist")
         return render_template('foodbankneeds.html', dest=destination, name=bankName, time=time, dist=dist)
-
-
-@app.route('/needsAndHaves')
-def needsAndHaves():
-    return render_template('needsandhaves.html')
 
 
 if __name__ == '__main__':
