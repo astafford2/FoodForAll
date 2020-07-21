@@ -66,11 +66,9 @@
   </div>
 
   <div class="formthing">
-    <form action="/action_page.php">
-  <label for="fname">Zip Code:</label>
-  <input type="text" id="fname" name="fname"><br><br>
-  <label for="lname">Address:</label>
-  <input type="text" id="lname" name="lname"><br><br>
+    <form method="POST">
+  <label for="origin">Address:</label>
+  <input type="text" id="origin" name="origin"><br><br>
   <input type="submit" value="Submit" >
 </form>
 <p><a href="{{ url_for('foodBankNeeds') }}">go to next page</a></p>

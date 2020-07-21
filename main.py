@@ -1,6 +1,11 @@
 
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, redirect, url_for
 from bankFood import *
+
+import sys
+
+sys.path.append("GoogleMaps/google-distance-matrix-api-example")
+from FoodBankFinder_v0 import *
 
 app = Flask(__name__)
 
@@ -22,13 +27,24 @@ def contactUs():
     return render_template('contactus.html')
 
 
-@app.route('/foodBank')
+@app.route('/foodBank', methods=['GET', 'POST'])
 def findFoodBank():
+    if request.method == 'POST':
+        origin = request.form['origin']
+
+        destination, bankName, time, dist = closestBank(origin)
+        dist *= 0.000621371
+        dist = round(dist, 2)
+
+        return redirect(url_for('foodBankNeeds', destination=destination, bankName=bankName, time=time, dist=dist))
+
     return render_template('foodbank.html')
+
 
 @app.route('/companyLogin')
 def companyLogin():
     return render_template('companylogin.html')
+
 
 @app.route('/companyFeatures')
 def companyFeatures():
@@ -46,7 +62,11 @@ def foodBankNeeds():
         return render_template('needsandhaves.html', neededItems=neededItems, storedItems=storedItems)
 
     else:
-        return render_template('foodbankneeds.html')
+        destination = request.args.get("destination")
+        bankName = request.args.get("bankName")
+        time = request.args.get("time")
+        dist = request.args.get("dist")
+        return render_template('foodbankneeds.html', dest=destination, name=bankName, time=time, dist=dist)
 
 
 @app.route('/needsAndHaves')
