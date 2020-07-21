@@ -4,28 +4,61 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width">
     <title>repl.it</title>
+    <style>
+        .dropdown
+        {
+            position: relative;
+            display: inline-block;
+        }
+        .dropdown-content
+        {
+            display: none;
+            position: absolute;
+            min-width: 140px;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+            z-index: 1;
+        }
+        .dropdown-content a
+        {
+            color: gray;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+        }
+        .dropdown-content a:hover
+        {
+            background-color: #7DB5E4
+        }
+        .dropdown:hover .dropdown-content {display: block;}
+    </style>
     <div id="header">
         <div  class="menu">
-            <p><a href="index.html">Home</a></p>
+            <p><a href="{{ url_for('home') }}">Home</a></p>
         </div>
         <div  class="menu">
-            <a href=aboutus.html><p>About Us</a></p>
+            <a href="{{ url_for('aboutUs') }}"><p>About Us</a></p>
         </div>
         <div  class="menu">
-            <img src="images/logo.png" >
+            <img src="{{ url_for('static', filename='logo.png') }}" >
         </div>
         <div  class="menu">
-             <p><a href="foodbank.html">Food Banks</a></p>
+             <div class="dropdown">
+                <p style="color: gray">Food Banks</p>
+                <div class="dropdown-content">
+                    <a href="{{ url_for('findFoodBank') }}">Find Banks</a>
+                    <a href="{{ url_for('companyLogin') }}">Company Login</a>
+                </div>
+            </div>
         </div>
         <div  class="menu">
-             <p><a href="contactus.html">Contact Us</a></p>
+             <p><a href="{{ url_for('contactUs') }}">Contact Us</a></p>
         </div>
         <div class="container">
-  <img src="images/vegetable.png" alt="Norway" style="width:100%;">
+  <img src="{{ url_for('static', filename='vegetable.png') }}" alt="Norway" style="width:100%;">
   
 </div>
     </div>
-    <link href="style.css" rel="stylesheet" type="text/css" />
+    <link href="{{ url_for('static', filename='style.css') }}" rel="stylesheet" type="text/css" />
   </head>
 
   <div class= "contact"

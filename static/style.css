@@ -4,7 +4,6 @@
             padding:0px;
             background: #A8D0E6
         }
-
         .menu
         {
             height:40px;
@@ -130,5 +129,13 @@
           border: 2px solid white;
           box-align: center;
           font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif
+        }
+        .cmpLoginBtn
+        {
+            color: gray;
+            background-color: #7DB5E4;
+            padding: 16px;
+            font-size: 20px;
+            border: groove;
         }
 

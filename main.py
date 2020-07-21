@@ -26,6 +26,14 @@ def contactUs():
 def findFoodBank():
     return render_template('foodbank.html')
 
+@app.route('/companyLogin')
+def companyLogin():
+    return render_template('companylogin.html')
+
+@app.route('/companyFeatures')
+def companyFeatures():
+    return render_template('companyFeatures.html')
+
 
 @app.route('/foodBankNeeds', methods=['GET', 'POST'])
 def foodBankNeeds():
@@ -43,11 +51,7 @@ def foodBankNeeds():
 
 @app.route('/needsAndHaves')
 def needsAndHaves():
-    # bank = input("Enter bank name: ")
-    # neededItems = fetchFoodNeeded(bank)
-    # storedItems = fetchFoodByBank(bank)
-
-    return render_template('needsandhaves.html') # , neededItems=neededItems, storedItems=storedItems
+    return render_template('needsandhaves.html')
 
 
 if __name__ == '__main__':

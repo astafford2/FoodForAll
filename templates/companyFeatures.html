@@ -30,6 +30,17 @@
             background-color: #7DB5E4
         }
         .dropdown:hover .dropdown-content {display: block;}
+        .cmpLoginBtn
+        {
+            color: gray;
+            background-color: #7DB5E4;
+            padding: 16px;
+            font-size: 20px;
+            border: outset;
+            border-radius: 25px;
+            border-color: #7DB5E4;
+            border-width: 3px;
+        }
     </style>
     <div id="header">
         <div  class="menu">
@@ -54,29 +65,10 @@
              <p><a href="{{ url_for('contactUs') }}">Contact Us</a></p>
         </div>
         <div class="container">
-  <img src="{{ url_for('static', filename='vegetable.png') }}" alt="Norway" style="width:100%;">
-  
-</div>
+            <img src="{{ url_for('static', filename='vegetable.png') }}" alt="Norway" style="width:100%;">
+        </div>
     </div>
     <link href="{{ url_for('static', filename='style.css') }}" rel="stylesheet" type="text/css" />
   </head>
-
-  <div class="foodbankresults">
-    <p>food banks near you.</p>
-    </div>
-    <hr>
-
-  <div class="boxes">
-    <p><a href="{{ url_for('needsAndHaves') }}"> First Food Bank     miles away</a></p>
-    <p> This would be a description of the food bank</p>
-  </div>
-
-  <div class="boxes">
-      <form method="POST">
-          Enter Bank Name:<br>
-          <input type="text" name="bankName"><br>
-          <input type="submit" value="Submit">
-      </form>
-  </div>
 
 </html>
