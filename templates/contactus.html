@@ -61,7 +61,7 @@
     <link href="{{ url_for('static', filename='style.css') }}" rel="stylesheet" type="text/css" />
   </head>
 
-  <div class= "contact"
+  <div class= "contact">
   <h1>Contact Us</h1>
   <hr>
   <p> Have any questions or concerns that needs to be addressed? Please contact us in the following ways: </p>
@@ -69,13 +69,15 @@
   </div>
 
   <div class= "email">
-    <form action="mailto:someone@example.com" method="post" enctype="text/plain">Name:<br>
-<input type="text" name="name"><br>
-E-mail:<br>
-<input type="text" name="mail"><br>
-Comment:<br>
-<input type="text" name="comment" size="50"><br><br>
-<input type="submit" value="Send">
-<input type="reset" value="Reset">
-</form>
+    <form action="mailto:someone@example.com" method="post" enctype="text/plain" style="margin: 15px">Name:<br>
+        <input type="text" name="name"><br>
+        E-mail:<br>
+        <input type="text" name="mail"><br>
+        Comment:<br>
+        <input type="text" name="comment" size="50" style="min-height: 100px"><br><br>
+        <input type="submit" value="Send">
+        <input type="reset" value="Reset">
+    </form>
+  </div>
+</html>
   

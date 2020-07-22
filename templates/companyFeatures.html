@@ -30,17 +30,6 @@
             background-color: #7DB5E4
         }
         .dropdown:hover .dropdown-content {display: block;}
-        .cmpLoginBtn
-        {
-            color: gray;
-            background-color: #7DB5E4;
-            padding: 16px;
-            font-size: 20px;
-            border: outset;
-            border-radius: 25px;
-            border-color: #7DB5E4;
-            border-width: 3px;
-        }
 
         .inputting{
             margin: 10px;
@@ -51,6 +40,24 @@
         {
             margin: 10px;
             float: right;
+        }
+        h1
+        {
+            color: white;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 10px;
+        }
+        .submit
+        {
+            color: white;
+            width: 75px;
+            height: 30px;
+            border-radius: 15px;
+        }
+        .submit:hover
+        {
+            background: #7DB5E4;
+            cursor: pointer;
         }
     </style>
     <div id="header">
@@ -87,6 +94,7 @@
         <div class="inputting">
             <form method="POST">
                 <h1>Input donated items:</h1>
+                <input type="hidden" name="formName" value="INPUT">
                 <label for"bankName">Food Bank Name:</label>
                 <input type="text" id="bankName" name="bankName" style="margin: 10px 0 10px 0"><br>
 
@@ -100,15 +108,28 @@
                 <label for="foodDesc">Food Description:</label>
                 <input type="text" id="foodDesc" name="foodDesc" style="margin: 10px 0 10px 0"><br>
 
-                <label for="quantity">Item Quantity:</label>
+                <label for="quantity">Item Input Quantity:</label>
                 <input type="text" id="quantity" name="quantity" style="margin: 10px 0 10px 0; max-width: 50px"><br><br>
 
-                <input type="submit" value="Submit">
+                <input type="submit" value="Submit" class="submit">
             </form>
         </div>
 
         <div class="removing">
-            <h1>Remove items given:</h1>
+            <form method="POST">
+                <h1>Remove items given:</h1>
+                <input type="hidden" name="formName" value="REMOVE">
+                <label for"bankName">Food Bank Name:</label>
+                <input type="text" id="bankName" name="bankName" style="margin: 10px 0 10px 0"><br>
+
+                <label for="foodDesc">Food Description:</label>
+                <input type="text" id="foodDesc" name="foodDesc" style="margin: 10px 0 10px 0"><br>
+
+                <label for="quantity">Item Removal Quantity:</label>
+                <input type="text" id="quantity" name="quantity" style="margin: 10px 0 10px 0; max-width: 50px"><br><br>
+
+                <input type="submit" value="Submit" class="submit">
+            </form>
         </div>
       </div>
   </body>

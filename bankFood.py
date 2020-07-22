@@ -66,7 +66,7 @@ def removeFoodItem(bank, desc, quantity):
     with foodBank.context():
         query = FoodItem.query(FoodItem.bankName == bank.upper(), FoodItem.foodDesc == desc.lower())
         item = query.get()
-        item.itemCount -= quantity
+        item.itemCount -= int(quantity)
 
         item.put()
     
@@ -76,7 +76,7 @@ def removeFoodItem(bank, desc, quantity):
 def removeDonations():
     bank = input("Enter bank: ")
     desc = input("Enter desc: ")
-    quantity = int(input("Enter number of item being removed: "))
+    quantity = input("Enter number of item being removed: ")
 
     removedItem = removeFoodItem(bank, desc, quantity)
 # [END removing]

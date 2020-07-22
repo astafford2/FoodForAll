@@ -54,12 +54,21 @@ def companyLogin():
 @app.route('/companyFeatures', methods=['GET', 'POST'])
 def companyFeatures():
     if request.method == 'POST':
-        bankName = request.form['bankName']
-        foodType = request.form['foodType']
-        foodDesc = request.form['foodDesc']
-        quantity = request.form['quantity']
+        formName = request.form['formName']
 
-        storeFoodItem(bankName, foodType, foodDesc, quantity)
+        if formName == 'INPUT':
+            bankName = request.form['bankName']
+            foodType = request.form['foodType']
+            foodDesc = request.form['foodDesc']
+            quantity = request.form['quantity']
+
+            storeFoodItem(bankName, foodType, foodDesc, quantity)
+        elif formName == 'REMOVE':
+            bankName = request.form['bankName']
+            foodDesc = request.form['foodDesc']
+            quantity = request.form['quantity']
+
+            removeFoodItem(bankName, foodDesc, quantity)
 
         return redirect(url_for('companyFeatures'))
     else:

@@ -35,7 +35,7 @@ def closestBank(origin):
             + '&origins={}'
             + '&destinations={}'
             + '&key={}'
-            ).format(origin, a, key)
+            ).format(origin, a.replace("", "+"), key)
 
         response = urllib.request.urlopen(url)
 
