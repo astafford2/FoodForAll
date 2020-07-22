@@ -30,6 +30,36 @@
             background-color: #7DB5E4
         }
         .dropdown:hover .dropdown-content {display: block;}
+        h2
+        {
+            color: white;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        .needsAndHaves
+        {
+            text-align: center;
+            margin: 0 20% 0 20%;
+        }
+        .needs
+        {
+            float: left;
+            margin: 5px;
+            padding: 10px;
+            width: 50%;
+            border: 2px solid white;
+            box-align: center;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif
+        }
+        .haves
+        {
+            float: right;
+            margin: 5px;
+            padding: 10px;
+            width: 50%;
+            border: 2px solid white;
+            box-align: center;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif
+        }
     </style>
     <div id="header">
         <div  class="menu">
@@ -62,15 +92,18 @@
   </head>
 
     <body>
-        <div class="row">
-            <div class="column">
+        <div class="needsAndHaves">
+            <h2>{{ neededItems[0]['bankName'] }}:</h2>
+            <div class="needs">
+                <h4>We need:</h4>
                 {% for item in neededItems %}
-                    <p>@ {{ item['bankName'] }} we need {{ item['foodDesc']}}</p>
+                    <p>- {{ item['foodDesc']}}</p>
                 {% endfor %}
             </div>
-            <div class="column">
+            <div class="haves">
+                <h4>We have:</h4>
                 {% for item in storedItems %}
-                    <p>@ {{ item['bankName'] }} we have {{ item['itemCount'] }} {{ item['foodDesc']}}</p>
+                    <p>- {{ item['itemCount'] }} {{ item['foodDesc']}}</p>
                 {% endfor %}
             </div>
         </div>
