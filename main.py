@@ -1,11 +1,8 @@
 
 from flask import Flask, render_template, request, redirect, url_for
 from bankFood import *
+from FoodBankFinder_v1 import *
 
-import sys
-
-sys.path.append("GoogleMaps/google-distance-matrix-api-example")
-from FoodBankFinder_v0 import *
 
 app = Flask(__name__)
 
@@ -37,11 +34,16 @@ def findFoodBank():
 
         origin = address + " " + city + " " + state + " " + zipcode
 
-        destination, bankName, time, dist = closestBank(origin)
-        dist *= 0.000621371
-        dist = round(dist, 2)
+        bankNames = []
+        bankAddrs = []
+        bankNums = []
+        bankDescs = []
+        bankDists = []
+        bankTimes = []
 
-        return redirect(url_for('foodBankNeeds', destination=destination, bankName=bankName, time=time, dist=dist))
+        bankNames, bankAddrs, bankNums, bankDescs, bankDists, bankTimes = closestBanks(origin)
+
+        return redirect(url_for('foodBankNeeds', len=len(bankNames), bankNames=bankNames, destinations=bankAddrs, bankNums=bankNums, bankDescs=bankDescs, bankTimes=bankTimes, bankDists=bankDists))
 
     return render_template('foodbank.html')
 
@@ -86,11 +88,15 @@ def foodBankNeeds():
         return render_template('needsandhaves.html', neededItems=neededItems, storedItems=storedItems)
 
     else:
-        destination = request.args.get("destination")
-        bankName = request.args.get("bankName")
-        time = request.args.get("time")
-        dist = request.args.get("dist")
-        return render_template('foodbankneeds.html', dest=destination, name=bankName, time=time, dist=dist)
+        length = int(request.args.get("len"))
+        bankNames = request.args.getlist("bankNames")
+        destinations = request.args.getlist("destinations")
+        bankNums = request.args.getlist("bankNums")
+        bankDescs = request.args.getlist("bankDescs")
+        bankTimes = request.args.getlist("bankTimes")
+        bankDists = request.args.getlist("bankDists")
+
+        return render_template('foodbankneeds.html',  length=length, bankNames=bankNames, destinations=destinations, bankNums=bankNums, bankDescs=bankDescs, bankTimes=bankTimes, bankDists=bankDists)
 
 
 if __name__ == '__main__':

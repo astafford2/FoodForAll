@@ -67,8 +67,14 @@
     <hr>
 
   <div class="boxes" style="padding: 10px">
-    <h3> Closest bank ({{ dist }} miles away)</h3>
-        <p style="font-size: 115%; font-weight: 500">{{ name }} @ {{ dest }} is {{ time }} minutes away</p>
+    <h3> Closest banks:</h3>
+    {% for i in range(0, length) %}
+        <div class="boxes">
+            <p style="font-size: 115%; font-weight: 500">{{ bankNames[i] }} @ {{ destinations[i] }} | {{ bankNums[i] }}</p>
+            <p>{{ bankDists[i] }} miles away | {{ bankTimes[i] }} minutes away</p>
+            <p>{{ bankDescs[i] }}</p>
+        </div>
+    {% endfor %}
   </div>
 
   <div class="boxes" style="padding: 10px">
