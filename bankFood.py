@@ -85,7 +85,7 @@ def removeDonations():
 # [START searching]
 def fetchFoodByBank(bank):
     with foodBank.context():
-        query = FoodItem.query(FoodItem.bankName == bank.upper())
+        query = FoodItem.query(FoodItem.bankName == bank.upper()).order(FoodItem.foodType)
         # items = [i.bankName + ' | ' + i.foodType + ' | ' + i.foodDesc + ' | ' + str(i.itemCount) for i in query]
         items = query.fetch()
 

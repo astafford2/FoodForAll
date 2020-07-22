@@ -3,3 +3,8 @@ indexes:
   properties:
   - name: bankName
   - name: itemCount
+  
+- kind: FoodItem
+  properties:
+  - name: bankName
+  - name: foodType
