@@ -79,6 +79,9 @@ def foodBankNeeds():
         neededItems = fetchFoodNeeded(bank)
         storedItems = fetchFoodByBank(bank)
 
+        if len(neededItems) == 0 or len(storedItems) == 0:
+            return render_template('errorPage.html')
+
         return render_template('needsandhaves.html', neededItems=neededItems, storedItems=storedItems)
 
     else:

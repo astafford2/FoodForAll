@@ -3,7 +3,8 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width">
-    <title>About Us</title>
+    <title>Home</title>
+    <link href="{{ url_for('static', filename='style.css') }}" rel="stylesheet" type="text/css" />
     <style>
         .dropdown
         {
@@ -30,6 +31,14 @@
             background-color: #7DB5E4
         }
         .dropdown:hover .dropdown-content {display: block;}
+        h2
+        {
+            color: white;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            text-align: center;
+            margin: auto;
+            margin-top: 15px;
+        }
     </style>
     <div id="header">
         <div  class="menu">
@@ -42,7 +51,7 @@
             <img src="{{ url_for('static', filename='logo.png') }}" >
         </div>
         <div  class="menu">
-             <div class="dropdown">
+            <div class="dropdown">
                 <p style="color: gray">Food Banks</p>
                 <div class="dropdown-content">
                     <a href="{{ url_for('findFoodBank') }}">Find Banks</a>
@@ -58,16 +67,10 @@
   
 </div>
     </div>
-    <link href="{{ url_for('static', filename='style.css') }}" rel="stylesheet" type="text/css" />
   </head>
 
-  <div class= "heaaderr"
-  <p>ABOUT US</p>
-  <p>Our product ensures that Hoosiers have every opportunity to help each other in their communities. 
-      By having access to the closest food banks near you, you will be able to access to donate excess 
-      food to a food bank near you. Due to COVID-19, many Hoosiers are struggling with food insecurity, 
-      and having this will allow others to easily help people in their own communities. Help our product 
-      blossom into something bigger.</p>
-  </div>
+  <body>
+      <h2>Sorry! The information for this bank has not been found, it may have been lost in the food stacks. Please check back later!</h2>
+  </body>
 
- 
+</html>
