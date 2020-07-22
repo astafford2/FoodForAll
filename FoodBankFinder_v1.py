@@ -89,5 +89,8 @@ def closestBanks(origin):
                     topnum_arr.append(row2[2])
                     topdesc_arr.append(row2[3])
 
-    
+    for addr in topadd_arr:
+        addr = addr.replace("+", " ")
+
+
     return topname_arr, topadd_arr, topnum_arr, topdesc_arr, topdist_arr, toptime_arr

@@ -34,16 +34,10 @@ def findFoodBank():
 
         origin = address + " " + city + " " + state + " " + zipcode
 
-        bankNames = []
-        bankAddrs = []
-        bankNums = []
-        bankDescs = []
-        bankDists = []
-        bankTimes = []
 
-        bankNames, bankAddrs, bankNums, bankDescs, bankDists, bankTimes = closestBanks(origin)
+        bankNames, bankAddresses, bankNums, bankDescs, bankDists, bankTimes = closestBanks(origin)
 
-        return redirect(url_for('foodBankNeeds', len=len(bankNames), bankNames=bankNames, destinations=bankAddrs, bankNums=bankNums, bankDescs=bankDescs, bankTimes=bankTimes, bankDists=bankDists))
+        return redirect(url_for('foodBankNeeds', len=len(bankNames), bankNames=bankNames, destinations=bankAddresses, bankNums=bankNums, bankDescs=bankDescs, bankTimes=bankTimes, bankDists=bankDists))
 
     return render_template('foodbank.html')
 

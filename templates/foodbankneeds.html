@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width">
-    <title>repl.it</title>
+    <title>Food Banks Neear You</title>
     <style>
         .dropdown
         {
@@ -30,6 +30,16 @@
             background-color: #7DB5E4
         }
         .dropdown:hover .dropdown-content {display: block;}
+        .bankBoxes
+        {
+            margin: auto;
+            margin-top: 10px;
+            padding: 10px;
+            width: 75%;
+            border: 2px solid white;
+            box-align: center;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif
+        }
     </style>
     <div id="header">
         <div  class="menu">
@@ -67,10 +77,11 @@
     <hr>
 
   <div class="boxes" style="padding: 10px">
-    <h3> Closest banks:</h3>
+    <h3 style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif"> Closest banks:</h3>
     {% for i in range(0, length) %}
-        <div class="boxes">
-            <p style="font-size: 115%; font-weight: 500">{{ bankNames[i] }} @ {{ destinations[i] }} | {{ bankNums[i] }}</p>
+        <div class="bankBoxes">
+            <p style="font-size: 115%; font-weight: 500">{{ bankNames[i] }}</p>
+            <p style="font-size: 105%; font-weight: 475">@ {{ destinations[i].replace('+', ' ').replace('"', '') }} | {{ bankNums[i] }}</p>
             <p>{{ bankDists[i] }} miles away | {{ bankTimes[i] }} minutes away</p>
             <p>{{ bankDescs[i] }}</p>
         </div>
