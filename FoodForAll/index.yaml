@@ -1,5 +1,0 @@
-indexes:
-- kind: FoodItem
-  properties:
-  - name: bankName
-  - name: itemCount
