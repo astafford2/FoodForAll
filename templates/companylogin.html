@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>Company Login</title>
+    <style>
+        .dropdown
+        {
+            position: relative;
+            display: inline-block;
+        }
+        .dropdown-content
+        {
+            display: none;
+            position: absolute;
+            min-width: 140px;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+            z-index: 1;
+        }
+        .dropdown-content a
+        {
+            color: gray;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+        }
+        .dropdown-content a:hover
+        {
+            background-color: #7DB5E4
+        }
+        .dropdown:hover .dropdown-content {display: block;}
+        .cmpLoginBtn
+        {
+            color: white;
+            background: #7DB5E4;
+            padding: 16px;
+            font-size: 20px;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            border: outset;
+            border-radius: 25px;
+            border-color: #7DB5E4;
+            border-width: 3px;
+        }
+        .cmpLoginBtn:hover
+        {
+            cursor: pointer;
+        }
+    </style>
+    <div id="header">
+        <div  class="menu">
+            <p><a href="{{ url_for('home') }}">Home</a></p>
+        </div>
+        <div  class="menu">
+            <a href="{{ url_for('aboutUs') }}"><p>About Us</a></p>
+        </div>
+        <div  class="menu">
+            <img src="{{ url_for('static', filename='logo.png') }}" >
+        </div>
+        <div  class="menu">
+             <div class="dropdown">
+                <p style="color: gray">Food Banks</p>
+                <div class="dropdown-content">
+                    <a href="{{ url_for('findFoodBank') }}">Find Banks</a>
+                    <a href="{{ url_for('companyLogin') }}">Company Login</a>
+                </div>
+            </div>
+        </div>
+        <div  class="menu">
+             <p><a href="{{ url_for('contactUs') }}">Contact Us</a></p>
+        </div>
+        <div class="container">
+            <img src="{{ url_for('static', filename='vegetable.png') }}" alt="Norway" style="width:100%;">
+        </div>
+    </div>
+    <link href="{{ url_for('static', filename='style.css') }}" rel="stylesheet" type="text/css" />
+  </head>
+
+  <body>
+      <div style="text-align: center; margin-top: 50px">
+          <form action="{{ url_for('companyFeatures') }}">
+            <button class="cmpLoginBtn" type="submit">Login as Company</button>
+          </form>
+      </div>
+  </body>
+</html>

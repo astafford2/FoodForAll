@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>{{ neededItems[0]['bankName'] }}</title>
+    <style>
+        .dropdown
+        {
+            position: relative;
+            display: inline-block;
+        }
+        .dropdown-content
+        {
+            display: none;
+            position: absolute;
+            min-width: 140px;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+            z-index: 1;
+        }
+        .dropdown-content a
+        {
+            color: gray;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+        }
+        .dropdown-content a:hover
+        {
+            background-color: #7DB5E4
+        }
+        .dropdown:hover .dropdown-content {display: block;}
+        h2
+        {
+            color: white;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        .needsAndHaves
+        {
+            text-align: center;
+            margin: 0 20% 0 20%;
+        }
+        .needs
+        {
+            float: left;
+            margin: 5px;
+            padding: 10px;
+            width: 50%;
+            border: 2px solid white;
+            box-align: center;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif
+        }
+        .haves
+        {
+            float: right;
+            margin: 5px;
+            padding: 10px;
+            width: 50%;
+            border: 2px solid white;
+            box-align: center;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif
+        }
+    </style>
+    <div id="header">
+        <div  class="menu">
+            <p><a href="{{ url_for('home') }}">Home</a></p>
+        </div>
+        <div  class="menu">
+            <a href="{{ url_for('aboutUs') }}"><p>About Us</a></p>
+        </div>
+        <div  class="menu">
+            <img src="{{ url_for('static', filename='logo.png') }}" >
+        </div>
+        <div  class="menu">
+             <div class="dropdown">
+                <p style="color: gray">Food Banks</p>
+                <div class="dropdown-content">
+                    <a href="{{ url_for('findFoodBank') }}">Find Banks</a>
+                    <a href="{{ url_for('companyLogin') }}">Company Login</a>
+                </div>
+            </div>
+        </div>
+        <div  class="menu">
+             <p><a href="{{ url_for('contactUs') }}">Contact Us</a></p>
+        </div>
+        <div class="container">
+  <img src="{{ url_for('static', filename='vegetable.png') }}" alt="Norway" style="width:100%;">
+  
+</div>
+    </div>
+    <link href="{{ url_for('static', filename='style.css') }}" rel="stylesheet" type="text/css" />
+  </head>
+
+    <body>
+        <div class="needsAndHaves">
+            <h2>{{ neededItems[0]['bankName'] }}:</h2>
+            <div class="needs">
+                <h4>We need:</h4>
+                {% for item in neededItems %}
+                    <p>- {{ item['foodDesc']}}</p>
+                {% endfor %}
+            </div>
+            <div class="haves">
+                <h4>We have:</h4>
+                {% for item in storedItems %}
+                    <p>- {{ item['itemCount'] }} {{ item['foodDesc']}}</p>
+                {% endfor %}
+            </div>
+        </div>
+    </body>
+</html>
+
+  
